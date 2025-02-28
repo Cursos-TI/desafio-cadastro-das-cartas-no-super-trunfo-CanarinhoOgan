@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <string.h>
+
+// Definindo a estrutura da carta
+typedef struct {
+    char estado[3];           // Estado (ex: SP, RJ, etc.)
+    char codigo[10];          // Código da cidade
+    char nome[50];            // Nome da cidade
+    int populacao;            // População da cidade
+    float area;               // Área em km²
+    float pib;                // PIB em bilhões de reais
+    int pontos_turisticos;    // Número de pontos turísticos
+} Carta;
+
+void imprimirCarta(Carta c, int numero) {
+    printf("Carta %d:\n", numero);
+    printf("Estado: %s\n", c.estado);
+    printf("Código: %s\n", c.codigo);
+    printf("Nome da Cidade: %s\n", c.nome);
+    printf("População: %d\n", c.populacao);
+    printf("Área: %.2f km²\n", c.area);
+    printf("PIB: %.2f bilhões de reais\n", c.pib);
+    printf("Número de Pontos Turísticos: %d\n", c.pontos_turisticos);
+    printf("------------------------------\n");
+}
+
+int main() {
+    // Criando duas cartas
+    Carta carta1, carta2;
+
+    // Lendo dados da primeira carta
+    printf("Insira os dados da primeira carta:\n");
+    printf("Estado (ex: SP): ");
+    scanf("%s", carta1.estado);
+    printf("Código (ex: A01): ");
+    scanf("%s", carta1.codigo);
+    printf("Nome da Cidade: ");
+    getchar(); // Consumir o '\n' pendente
+    fgets(carta1.nome, 50, stdin);
+    carta1.nome[strcspn(carta1.nome, "\n")] = '\0'; // Remover o '\n'
+    printf("População: ");
+    scanf("%d", &carta1.populacao);
+    printf("Área (em km²): ");
+    scanf("%f", &carta1.area);
+    printf("PIB (em bilhões): ");
+    scanf("%f", &carta1.pib);
+    printf("Número de Pontos Turísticos: ");
+    scanf("%d", &carta1.pontos_turisticos);
+
+    printf("\n");
+
+    // Lendo dados da segunda carta
+    printf("Insira os dados da segunda carta:\n");
+    printf("Estado (ex: RJ): ");
+    scanf("%s", carta2.estado);
+    printf("Código (ex: B02): ");
+    scanf("%s", carta2.codigo);
+    printf("Nome da Cidade: ");
+    getchar(); // Consumir o '\n' pendente
+    fgets(carta2.nome, 50, stdin);
+    carta2.nome[strcspn(carta2.nome, "\n")] = '\0'; // Remover o '\n'
+    printf("População: ");
+    scanf("%d", &carta2.populacao);
+    printf("Área (em km²): ");
+    scanf("%f", &carta2.area);
+    printf("PIB (em bilhões): ");
+    scanf("%f", &carta2.pib);
+    printf("Número de Pontos Turísticos: ");
+    scanf("%d", &carta2.pontos_turisticos);
+
+    printf("\n");
+
+    // Exibindo os dados das cartas
+    imprimirCarta(carta1, 1);
+    imprimirCarta(carta2, 2);
+
+    return 0;
